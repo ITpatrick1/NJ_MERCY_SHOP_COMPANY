@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation System Demo - NJ MERCY SHOP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+        .demo-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .input-group-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: 2px solid #667eea;
+            font-weight: 600;
+        }
+        .input-group .form-control,
+        .input-group .form-select {
+            border-left: none;
+            border: 2px solid #e5e7eb;
+            padding: 0.75rem 1rem;
+            border-radius: 0 8px 8px 0 !important;
+        }
+        .input-group .form-control:focus,
+        .input-group .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .form-control.is-invalid {
+            border-color: #dc3545 !important;
+        }
+        .form-control.is-valid {
+            border-color: #198754 !important;
+        }
+        .invalid-feedback {
+            display: none;
+            color: #dc3545;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
+        .is-invalid ~ .invalid-feedback {
+            display: block;
+        }
+        .page-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        .feature-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.25rem;
+            color: white;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1 class="display-4 fw-bold mb-3">
+                <i class="fa fa-shield-alt"></i> Validation System Demo
+            </h1>
+            <p class="lead">Professional Form Validation for NJ MERCY SHOP</p>
+            <div class="mt-4">
+                <span class="feature-badge"><i class="fa fa-check"></i> Real-time Validation</span>
+                <span class="feature-badge"><i class="fa fa-check"></i> 20+ Rules</span>
+                <span class="feature-badge"><i class="fa fa-check"></i> Professional UI</span>
+                <span class="feature-badge"><i class="fa fa-check"></i> Dark Mode Ready</span>
+            </div>
+        </div>
+
+        <!-- Demo Form 1: User Registration -->
+        <div class="demo-card">
+            <h3 class="text-primary mb-4"><i class="fa fa-user-plus"></i> User Registration Demo</h3>
+            <form id="registrationDemo" data-validate-form>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-user"></i> Full Name <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input 
+                                name="full_name" 
+                                class="form-control" 
+                                placeholder="John Doe"
+                                data-validate="required|minLength:3|maxLength:100">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-phone"></i> Phone Number <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            <input 
+                                name="phone" 
+                                class="form-control" 
+                                placeholder="0783086909"
+                                data-validate="required|phone">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                        <small class="text-muted"><i class="fa fa-info-circle"></i> Format: 0XXXXXXXXX</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-envelope"></i> Email <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input 
+                                type="email"
+                                name="email" 
+                                class="form-control" 
+                                placeholder="user@example.com"
+                                data-validate="required|email">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-user-tag"></i> Role <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-user-tag"></i></span>
+                            <select 
+                                name="role" 
+                                class="form-select" 
+                                style="border-left:none;border-radius:0 8px 8px 0;"
+                                data-validate="required">
+                                <option value="">Select Role</option>
+                                <option value="manager">Manager</option>
+                                <option value="staff">Staff</option>
+                            </select>
+                        </div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-key"></i> Password <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            <input 
+                                id="demo_password"
+                                name="password" 
+                                type="password"
+                                class="form-control" 
+                                placeholder="Min. 6 characters"
+                                data-validate="required|password">
+                            <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('demo_password')">
+                                <i class="fa fa-eye" id="demo_password-toggle-icon"></i>
+                            </button>
+                        </div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-key"></i> Confirm Password <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            <input 
+                                id="demo_confirm"
+                                name="confirm_password" 
+                                type="password"
+                                class="form-control" 
+                                placeholder="Re-enter password"
+                                data-validate="required|match:demo_password">
+                            <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('demo_confirm')">
+                                <i class="fa fa-eye" id="demo_confirm-toggle-icon"></i>
+                            </button>
+                        </div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg w-100">
+                    <i class="fa fa-user-plus"></i> Register User
+                </button>
+            </form>
+        </div>
+
+        <!-- Demo Form 2: Product Entry -->
+        <div class="demo-card">
+            <h3 class="text-primary mb-4"><i class="fa fa-box"></i> Product Entry Demo</h3>
+            <form id="productDemo" data-validate-form>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-box"></i> Product Name <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-box"></i></span>
+                            <input 
+                                name="product_name" 
+                                class="form-control" 
+                                placeholder="iPhone 15 Pro"
+                                data-validate="required|minLength:2|maxLength:100">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-truck"></i> Supplier ID <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-truck"></i></span>
+                            <input 
+                                type="number"
+                                name="supplier_id" 
+                                class="form-control" 
+                                placeholder="123"
+                                data-validate="required|positiveNumber">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-sort-numeric-up"></i> Quantity <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-sort-numeric-up"></i></span>
+                            <input 
+                                type="number"
+                                name="quantity" 
+                                class="form-control" 
+                                placeholder="10"
+                                min="1"
+                                data-validate="required|positiveNumber|min:1">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                        <small class="text-muted"><i class="fa fa-info-circle"></i> Must be at least 1</small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-money-bill"></i> Unit Price <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-money-bill"></i></span>
+                            <input 
+                                type="number"
+                                name="unit_price" 
+                                class="form-control" 
+                                placeholder="999.99"
+                                step="0.01"
+                                min="0.01"
+                                data-validate="required|positiveNumber|min:0.01">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                        <small class="text-muted"><i class="fa fa-info-circle"></i> Minimum 0.01</small>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                    <i class="fa fa-save"></i> Save Product
+                </button>
+            </form>
+        </div>
+
+        <!-- Demo Form 3: Client Registration -->
+        <div class="demo-card">
+            <h3 class="text-primary mb-4"><i class="fa fa-users"></i> Client Registration Demo</h3>
+            <form id="clientDemo" data-validate-form>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-user"></i> Client Name <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input 
+                                name="client_name" 
+                                class="form-control" 
+                                placeholder="Acme Corporation"
+                                data-validate="required|minLength:3|maxLength:100">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-phone"></i> Phone Number <span class="text-danger">*</span>
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            <input 
+                                name="client_phone" 
+                                class="form-control" 
+                                placeholder="0783086909"
+                                data-validate="required|phone">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-envelope"></i> Email
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input 
+                                type="email"
+                                name="client_email" 
+                                class="form-control" 
+                                placeholder="client@example.com"
+                                data-validate="email">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                        <small class="text-muted"><i class="fa fa-info-circle"></i> Optional but must be valid</small>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-600">
+                            <i class="fa fa-id-card"></i> TIN (Tax ID)
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                            <input 
+                                name="tin" 
+                                class="form-control" 
+                                placeholder="123456789"
+                                maxlength="9"
+                                data-validate="tin">
+                        </div>
+                        <div class="invalid-feedback"></div>
+                        <small class="text-muted"><i class="fa fa-info-circle"></i> Optional, must be exactly 9 digits</small>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-600">
+                        <i class="fa fa-map-marker-alt"></i> Address
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa fa-map-marker-alt"></i></span>
+                        <textarea 
+                            name="address" 
+                            class="form-control" 
+                            placeholder="KG 123 St, Kigali"
+                            rows="2"
+                            data-validate="maxLength:255"></textarea>
+                    </div>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg w-100">
+                    <i class="fa fa-user-plus"></i> Register Client
+                </button>
+            </form>
+        </div>
+
+        <!-- Validation Rules Reference -->
+        <div class="demo-card">
+            <h3 class="text-primary mb-4"><i class="fa fa-book"></i> Validation Rules Reference</h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Rule</th>
+                            <th>Usage</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>required</code></td>
+                            <td><code>data-validate="required"</code></td>
+                            <td>Field must not be empty</td>
+                        </tr>
+                        <tr>
+                            <td><code>email</code></td>
+                            <td><code>data-validate="email"</code></td>
+                            <td>Must be valid email format</td>
+                        </tr>
+                        <tr>
+                            <td><code>phone</code></td>
+                            <td><code>data-validate="phone"</code></td>
+                            <td>Rwandan phone format (0XXXXXXXXX)</td>
+                        </tr>
+                        <tr>
+                            <td><code>positiveNumber</code></td>
+                            <td><code>data-validate="positiveNumber"</code></td>
+                            <td>Must be greater than 0</td>
+                        </tr>
+                        <tr>
+                            <td><code>min:value</code></td>
+                            <td><code>data-validate="min:10"</code></td>
+                            <td>Minimum value or length</td>
+                        </tr>
+                        <tr>
+                            <td><code>max:value</code></td>
+                            <td><code>data-validate="max:100"</code></td>
+                            <td>Maximum value or length</td>
+                        </tr>
+                        <tr>
+                            <td><code>minLength:n</code></td>
+                            <td><code>data-validate="minLength:3"</code></td>
+                            <td>Minimum character length</td>
+                        </tr>
+                        <tr>
+                            <td><code>maxLength:n</code></td>
+                            <td><code>data-validate="maxLength:50"</code></td>
+                            <td>Maximum character length</td>
+                        </tr>
+                        <tr>
+                            <td><code>tin</code></td>
+                            <td><code>data-validate="tin"</code></td>
+                            <td>9-digit Tax ID (optional)</td>
+                        </tr>
+                        <tr>
+                            <td><code>password</code></td>
+                            <td><code>data-validate="password"</code></td>
+                            <td>Minimum 6 characters</td>
+                        </tr>
+                        <tr>
+                            <td><code>match:fieldId</code></td>
+                            <td><code>data-validate="match:password"</code></td>
+                            <td>Must match another field</td>
+                        </tr>
+                        <tr>
+                            <td><code>date</code></td>
+                            <td><code>data-validate="date"</code></td>
+                            <td>Valid date format</td>
+                        </tr>
+                        <tr>
+                            <td><code>pastDate</code></td>
+                            <td><code>data-validate="pastDate"</code></td>
+                            <td>Date must be in past</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="alert alert-info mt-3">
+                <i class="fa fa-info-circle"></i> <strong>Multiple Rules:</strong> Combine rules using pipe (|) separator. 
+                Example: <code>data-validate="required|phone"</code>
+            </div>
+        </div>
+
+        <!-- Back to Application -->
+        <div class="text-center mt-4">
+            <a href="index.php" class="btn btn-outline-light btn-lg">
+                <i class="fa fa-arrow-left"></i> Back to Application
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app/views/layout/validation.js"></script>
+    <script>
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const icon = document.getElementById(fieldId + '-toggle-icon');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                field.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Prevent actual submission (demo only)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (!this.querySelector('.is-invalid')) {
+                    alert('✅ Form is valid! In production, this would submit to the server.');
+                }
+            });
+        });
+
+        // Initialize tooltips
+        const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        tooltips.forEach(el => new bootstrap.Tooltip(el));
+    </script>
+</body>
+</html>

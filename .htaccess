@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /NJ_MERCY_SHOP_COMPANY/
+
+# If the request is not a file or directory, route to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?$1 [QSA,L]
